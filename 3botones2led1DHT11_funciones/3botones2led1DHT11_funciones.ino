@@ -70,7 +70,8 @@ void setup() {// Inicio de void setup ()
 void loop() {// Inicio de void loop
 
   TiempoActual = millis(); // tiempo actual en milisegundos
-
+  t = dht.readTemperature(); // Read temperature as Celsius (the default)
+  
   if (TiempoActual >= TiempoObjetivo){  // esta condición se cunple cada 2000 milisegundos
     lecturaSensor();
   }
@@ -83,8 +84,7 @@ void loop() {// Inicio de void loop
 // Funcioes del usuario
 
 void lecturaSensor(){
-  t = dht.readTemperature(); // Read temperature as Celsius (the default)
-
+  
   // Check if any reads failed and exit early (to try again).
   if (isnan(t)) {
     Serial.println(F("Failed to read from DHT sensor!"));
